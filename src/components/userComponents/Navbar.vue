@@ -10,8 +10,8 @@
       </p>
     </div>
     <div class="navbar_right">
-      <img :src="url" alt v-if="url" />
-      <img src="@/assets/default_img.jpg" alt v-else />
+      <img :src="url" alt v-if="url" @click="onToUserinfo" />
+      <img src="@/assets/default_img.jpg" alt v-else @click="onToUserinfo" />
       <span class="downapp">下载App</span>
     </div>
   </div>
@@ -34,6 +34,15 @@ export default {
       if (this.$router.currentRoute.fullPath !== '/') {
         this.$router.push('/')
       }
+    },
+    onToUserinfo () {
+      if (this.$router.currentRoute.fullPath.indexOf('/userinfo') === 0) {
+        // 当前页面是用户信息页就什么也不做，否则就跳转
+        return
+      }
+      this.$router.push({
+        name: 'userinfo'
+      })
     }
   },
 }

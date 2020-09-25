@@ -75,7 +75,7 @@ export default {
     // 获取推荐数据
     async getRecommendData () {
       const res = await this.$axios.get('/commend')
-      console.log(res);
+      // console.log(res);
       this.commendData = res.data
     },
     // 发表评论
@@ -93,7 +93,7 @@ export default {
     },
     // 回复评论
     replyComment (id) {
-      console.log(id);
+      // console.log(id);
 
       // 将comment中的parent_id修改为子组件传过来的评论id
       this.comment.parent_id = id
@@ -105,7 +105,7 @@ export default {
       const res = await this.$axios.post('/collection/' + localStorage.getItem('id'), {
         article_id: this.$route.params.id
       })
-      console.log(res);
+      // console.log(res);
       if (res.data.code === 200) {//请求成功
         this.$toast.success(res.data.msg)
         if (res.data.msg === '收藏成功') {
@@ -132,7 +132,7 @@ export default {
       const res = await this.$axios.post('/sub_scription/' + localStorage.getItem('id'), {
         sub_id: this.articleDetail && this.articleDetail.userid
       })
-      console.log(res);
+      // console.log(res);
       if (res.data.code === 200) {//请求成功
         this.$toast.success(res.data.msg)
         if (res.data.msg === '关注成功') {
@@ -154,7 +154,10 @@ export default {
     }
   },
   watch: {
-    $route () {
+    $route (to, from) {
+      // console.log(to);
+      // console.log(from);
+
       this.getDetailData()
       this.getRecommendData()
       this.getCollection()

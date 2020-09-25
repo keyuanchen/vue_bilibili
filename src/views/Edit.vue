@@ -77,23 +77,23 @@ export default {
     async getUserinfo () {
       if (localStorage.getItem('token')) {
         const res = await this.$axios.get('/user/' + localStorage.getItem('id'))
-        console.log(res);
+        // console.log(res);
         this.userinfo = res.data[0]
       }
     },
     async afterRead (file) {
-      console.log(file);
+      // console.log(file);
       const fd = new FormData()
       fd.append('file', file.file)
       const res = await this.$axios.post('/upload', fd)
-      console.log(res);
+      // console.log(res);
       // 修改头像图片
       this.userinfo.user_img = res.data.url
       this.updateUser()
     },
     async updateUser () {
       const res = await this.$axios.post('/update/' + localStorage.getItem('id'), this.userinfo)
-      console.log(res);
+      // console.log(res);
     },
     // 确认修改昵称
     handleConfirmNickName () {

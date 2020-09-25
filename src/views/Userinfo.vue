@@ -10,7 +10,7 @@ import Navbar from '@/components/userComponents/Navbar'
 import UserDetail from '@/components/userComponents/UserDetail'
 
 export default {
-  name: '',
+  name: 'UserInfo',
   components: {
     Navbar,
     UserDetail
@@ -26,7 +26,7 @@ export default {
   methods: {
     async getUserInfo () {
       const res = await this.$axios.get('/user/' + localStorage.getItem('id'))
-      console.log(res);
+      // console.log(res);
       this.model = res.data[0]
     }
   },

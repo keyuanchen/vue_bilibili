@@ -50,7 +50,7 @@ export default {
     // 获取评论数据
     async getCommentData () {
       const res = await this.$axios.get('/comment/' + this.$route.params.id)
-      console.log(res);
+      // console.log(res.data);
       const length = res.data.length
       this.$emit('commentLen', length)
       this.comments = this.changeCommentData(res.data)

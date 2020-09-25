@@ -45,6 +45,7 @@ export default {
     Cover
   },
   created () {
+
     // this.getUserinfo()
     // this.getCategoryData()
   },
